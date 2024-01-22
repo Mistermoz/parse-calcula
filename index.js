@@ -3,14 +3,13 @@
 
 import express from 'express';
 import { ParseServer } from 'parse-server';
-import path from 'path';
-const __dirname = import.meta.url;
 import http from 'http';
+import cloud from "./cloud/main.js";
 
 export const config = {
   databaseURI:
     process.env.DATABASE_URI || process.env.MONGODB_URI || '',
-  cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
+  cloud: process.env.CLOUD_CODE_MAIN || cloud,
   appId: process.env.APP_ID || 'parse-server-calcula',
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse', // Don't forget to change to https if needed
@@ -25,7 +24,7 @@ export const config = {
 export const app = express();
 
 // Serve static assets from the /public folder
-app.use('/public', express.static(path.join(__dirname, '/public')));
+app.use('/public', express.static('public'));
 
 // Serve the Parse API on the /parse URL prefix
 if (!process.env.TESTING) {
@@ -43,7 +42,7 @@ app.get('/', function (req, res) {
 // There will be a test page available on the /test path of your server url
 // Remove this before launching your app
 app.get('/test', function (req, res) {
-  res.sendFile(path.join(__dirname, '/public/test.html'));
+  res.sendFile('/public/test.html', { root: '.' });
 });
 
 if (!process.env.TESTING) {
