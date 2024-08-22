@@ -8,14 +8,24 @@ import cloud from "./cloud/main.js";
 
 export const config = {
   databaseURI:
-    process.env.DATABASE_URI || process.env.MONGODB_URI || '',
+    process.env.DATABASE_URI || process.env.MONGODB_URI || 'mongodb://localhost:27017',
   cloud: process.env.CLOUD_CODE_MAIN || cloud,
   appId: process.env.APP_ID || 'parse-server-calcula',
-  masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
+  masterKey: process.env.MASTER_KEY || 'YOUR_APP_MASTER_KEY', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse', // Don't forget to change to https if needed
   liveQuery: {
     classNames: ['Posts', 'Comments'], // List of classes to support for query subscriptions
   },
+  emailAdapter: {
+    module: "parse-server-generic-email-adapter",
+    options: {
+       service: "Gmail", // Could be anything like yahoo, hotmail, etc, Full list - see below 
+       email: "metabolicaschile@gmail.com",
+       password: ""
+    }
+  },
+  appName: 'Metabolicas Chile CalculAAA',
+  publicServerURL: 'https://localhost:1337/parse',
 };
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
