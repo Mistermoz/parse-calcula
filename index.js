@@ -16,14 +16,6 @@ export const config = {
   liveQuery: {
     classNames: ['Posts', 'Comments'], // List of classes to support for query subscriptions
   },
-  emailAdapter: {
-    module: "parse-server-generic-email-adapter",
-    options: {
-       service: "Gmail", // Could be anything like yahoo, hotmail, etc, Full list - see below 
-       email: "metabolicaschile@gmail.com",
-       password: process.env.EMAIL_PASSWORD || '',
-    }
-  },
   appName: 'Metabolicas Chile CalculAAA',
   publicServerURL: process.env.PUBLIC_SERVER_URL,
 };
