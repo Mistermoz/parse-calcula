@@ -53,6 +53,7 @@ if (!process.env.TESTING) {
   httpServer.listen(port, function () {
     console.log('parse-server-example running on port ' + port + '.');
   });
+  httpServer.maxHeadersCount = 0;
   // This will enable the Live Query real-time server
   await ParseServer.createLiveQueryServer(httpServer);
 }
