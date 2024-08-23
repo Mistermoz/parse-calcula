@@ -21,11 +21,11 @@ export const config = {
     options: {
        service: "Gmail", // Could be anything like yahoo, hotmail, etc, Full list - see below 
        email: "metabolicaschile@gmail.com",
-       password: ""
+       password: process.env.EMAIL_PASSWORD || '',
     }
   },
   appName: 'Metabolicas Chile CalculAAA',
-  publicServerURL: 'https://localhost:1337/parse',
+  publicServerURL: process.env.PUBLIC_SERVER_URL,
 };
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
