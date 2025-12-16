@@ -13,7 +13,7 @@
     "express": "5.1.0",
     "ip": "^2.0.1",
     "parse": "6.1.1",
-    "parse-server": "8.2.3",
+    "parse-server": "8.6.1",
     "ws": "^8.18.0"
   },
   "scripts": {
